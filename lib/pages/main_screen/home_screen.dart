@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/background_widget.dart';
+import '../../widgets/background_widget.dart';
+import '../../models/weather_forecast.dart';
+import '../../api/weather_api.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,8 +12,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Future<WeatherForecast> forecastObject;
+  final String _cityName = 'Kiev';
   final items = ['By the hour', 'By the day'];
   String? dropdownValue;
+
+  @override
+  void initState() {
+    super.initState();
+    forecastObject =
+        WeatherApi().fetchWeatherForecastWithCity(cityName: _cityName);
+
+    forecastObject.then(
+      (value) => print(value.list[0].weather[0].main),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.blueGrey,
       ),
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: backGroundWidget(),
+        child: Center(child: Text('text')),
       ),
     );
   }

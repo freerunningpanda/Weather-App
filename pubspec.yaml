@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^2.0.2
   json_annotation: ^4.4.0
+  http: ^0.13.4
 
 flutter_native_splash:
   color: "#00ACC1"
