@@ -7,6 +7,7 @@ import '../../models/weather_forecast.dart';
 import '../main_screen/cubit/weather_forecast_daily_cubit.dart';
 import '../../api/weather_repository.dart';
 import '../../widgets/city_temp_view.dart';
+import '../../widgets/weather_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -81,22 +82,9 @@ class _HomeScreenState extends State<_HomeScreen> {
               height: double.infinity,
               decoration: backGroundWidget(),
               child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: const Color.fromRGBO(255, 255, 255, 0.5),
-                          border: Border.all(),
-                          borderRadius: BorderRadius.circular(15.0)),
-                      child: Column(
-                        children: const [
-                          SizedBox(height: 20),
-                          CityTempView(),
-                        ],
-                      ),
-                    ),
-                  ),
+                children: const [
+                  CityTempView(),
+                  WeatherList(),
                 ],
               ),
             );
