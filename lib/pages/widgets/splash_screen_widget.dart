@@ -4,14 +4,14 @@ Widget splashScreenWidget() {
   return Container(
     decoration: const BoxDecoration(
       image: DecorationImage(
-        image: AssetImage('assets/background/bg.jpg'),
+        image: AssetImage('assets/background/bg_splash.png'),
         fit: BoxFit.cover,
       ),
     ),
     child: Center(
       child: CircularProgressIndicator(
-        backgroundColor: Colors.lightGreen[300],
-        color: Colors.green[700],
+        backgroundColor: Colors.blueGrey[800],
+        color: Colors.yellow,
       ),
     ),
   );

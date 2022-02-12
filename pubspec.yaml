@@ -37,11 +37,13 @@ dependencies:
   flutter_native_splash: ^2.0.2
 
 flutter_native_splash:
-  background_image: "assets/splash_screen/splash_screen.png"
+  color: "#00ACC1"
+  image: "assets/logo/logo.png"
+  # background_image: "assets/logo/logo.png"
   android: true
   ios: true
-  android_gravity: cover
-  ios_content_mode: scaleAspectFill
+  # android_gravity: cover
+  ios_content_mode: scaleAspectFit
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +70,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/background/
+    - assets/icons/
+    - assets/logo/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
