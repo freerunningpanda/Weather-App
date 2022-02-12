@@ -5,10 +5,18 @@ import 'package:http/http.dart' as http;
 
 import '../models/weather_forecast.dart';
 import '../utilities/constants.dart';
+import '../utilities/geolocation.dart';
 
 class WeatherApi {
   Future<WeatherForecast> fetchWeatherForecastWithCity(
-      {String? cityName}) async {
+      {String? cityName, bool isCity = false}) async {
+    Geolocation geolocation = Geolocation();
+    await geolocation.getLocation();
+
+    Map<String, String?> parametres;
+
+    if (isCity) {}
+
     var queryParametres = {
       'APPID': Constants.weatherAppId,
       'units': 'metric',

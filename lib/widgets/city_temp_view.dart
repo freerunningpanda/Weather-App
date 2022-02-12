@@ -16,7 +16,7 @@ class CityTempView extends StatelessWidget {
           var icon = forecastList[0].getIconUrl();
           var city = state.loadWeather.city.name;
           var country = state.loadWeather.city.country;
-          var temperature = forecastList[0].temp.day.toStringAsFixed(0);
+          var temperature = forecastList[0].temp.day.floorToDouble().toInt();
           var description =
               forecastList[0].weather[0].description.toUpperCase();
           var formattedDate =
@@ -56,7 +56,9 @@ class CityTempView extends StatelessWidget {
                             '$temperature ℃',
                             style: TextStyle(
                                 fontSize: 35,
-                                color: Colors.orange[800],
+                                color: temperature <= 0
+                                    ? Colors.blue[700]
+                                    : Colors.orange[700],
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(

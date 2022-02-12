@@ -39,9 +39,7 @@ class WeatherList extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) => Container(
                         decoration: BoxDecoration(
-                            color: index % 2 == 0
-                                ? Colors.yellowAccent[400]
-                                : Colors.blueGrey,
+                            color: Colors.blue[50],
                             borderRadius: BorderRadius.circular(12.0)),
                         width: MediaQuery.of(context).size.width / 3.0,
                         child: weatherCard(state.loadWeather, index),
