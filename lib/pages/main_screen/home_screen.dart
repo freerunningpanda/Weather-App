@@ -1,32 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/widgets/splash_screen_widget.dart';
 
 import '../../widgets/background_widget.dart';
 import '../../models/weather_forecast.dart';
-import '../../api/weather_api.dart';
+import '../main_screen/cubit/weather_forecast_daily_cubit.dart';
+import '../../api/weather_repository.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => WeatherForecastDailyCubit(WeatherRepository()),
+      child: const _HomeScreen(),
+    );
+  }
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreen extends StatefulWidget {
+  const _HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<_HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<_HomeScreen> {
   late Future<WeatherForecast> forecastObject;
   final String _cityName = 'Kiev';
   final items = ['By the hour', 'By the day'];
   String? dropdownValue;
-
-  @override
-  void initState() {
-    super.initState();
-    forecastObject =
-        WeatherApi().fetchWeatherForecastWithCity(cityName: _cityName);
-
-    forecastObject.then(
-      (value) => print(value.list[0].weather[0].main),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +66,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         backgroundColor: Colors.blueGrey,
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: backGroundWidget(),
-        child: Center(child: Text('text')),
+      body: BlocBuilder<WeatherForecastDailyCubit, WeatherForecastDailyState>(
+        builder: (context, state) {
+          if (state is WeatherForecastDailyInitial) {
+            context
+                .read<WeatherForecastDailyCubit>()
+                .fetchWeatherWithCity(cityName: _cityName);
+            return splashScreenWidget();
+          }
+          if (state is WeatherForecastLoadedState) {
+            return Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: backGroundWidget(),
+              child: const Center(child: Text('Is good!')),
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
