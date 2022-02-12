@@ -4,7 +4,7 @@ Widget splashScreenWidget() {
   return Container(
     decoration: const BoxDecoration(
       image: DecorationImage(
-        image: AssetImage('assets/background/bg_splash.png'),
+        image: AssetImage('assets/background/bg.png'),
         fit: BoxFit.cover,
       ),
     ),
