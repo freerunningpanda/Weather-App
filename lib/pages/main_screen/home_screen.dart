@@ -6,6 +6,7 @@ import '../../widgets/background_widget.dart';
 import '../../models/weather_forecast.dart';
 import '../main_screen/cubit/weather_forecast_daily_cubit.dart';
 import '../../api/weather_repository.dart';
+import '../../widgets/city_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -79,7 +80,12 @@ class _HomeScreenState extends State<_HomeScreen> {
               width: double.infinity,
               height: double.infinity,
               decoration: backGroundWidget(),
-              child: const Center(child: Text('Is good!')),
+              child: Column(
+                children: const [
+                  SizedBox(height: 50),
+                  CityView(),
+                ],
+              ),
             );
           }
           return const Center(
