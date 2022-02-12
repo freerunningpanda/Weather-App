@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../widgets/background_widget.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   final items = ['By the hour', 'By the day'];
   String? dropdownValue;
 
@@ -34,11 +34,11 @@ class _MainScreenState extends State<MainScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                dropdownColor: Colors.green[100],
+                dropdownColor: Colors.yellow[100],
                 value: dropdownValue,
                 icon: Image.asset('assets/icons/arrow_down.png'),
                 elevation: 16,
-                style: const TextStyle(color: Colors.black87),
+                style: const TextStyle(color: Colors.blueGrey),
                 onChanged: (value) => setState(() => dropdownValue = value),
                 items: items.map(buildMenuItem).toList(),
               ),
