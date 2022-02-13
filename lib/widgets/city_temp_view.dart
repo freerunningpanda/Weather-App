@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../pages/main_screen/cubit/weather_forecast_daily_cubit.dart';
 import '../utilities/forecast_util.dart';
+import '../widgets/border_widget.dart';
 
 class CityTempView extends StatelessWidget {
   const CityTempView({Key? key}) : super(key: key);
@@ -24,54 +25,54 @@ class CityTempView extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(
-              decoration: BoxDecoration(
-                  color: const Color.fromRGBO(255, 255, 255, 0.5),
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(15.0)),
-              child: Column(
-                children: [
-                  const SizedBox(height: 16),
-                  Text(
-                    '$city, $country',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                        fontSize: 42.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.orange[800]),
-                  ),
-                  Text(
-                    Util.getFormattedDate(formattedDate),
-                    style: const TextStyle(fontSize: 15),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.network(
-                        icon,
-                        scale: 0.5,
-                      ),
-                      const SizedBox(width: 20.0),
-                      Column(
-                        children: [
-                          Text(
-                            '$temperature ℃',
-                            style: TextStyle(
-                                fontSize: 35,
-                                color: temperature <= 0
-                                    ? Colors.blue[700]
-                                    : Colors.orange[700],
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            description,
-                            style: const TextStyle(fontSize: 15.0),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+              decoration: borderWidget(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 16),
+                    Text(
+                      '$city, $country',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: TextStyle(
+                          fontSize: 38.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.orange[800]),
+                    ),
+                    Text(
+                      Util.getFormattedDate(formattedDate),
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.network(
+                          icon,
+                          scale: 0.5,
+                        ),
+                        const SizedBox(width: 20.0),
+                        Column(
+                          children: [
+                            Text(
+                              '$temperature ℃',
+                              style: TextStyle(
+                                  fontSize: 35,
+                                  color: temperature <= 0
+                                      ? Colors.blue[700]
+                                      : Colors.orange[700],
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              description,
+                              style: const TextStyle(fontSize: 15.0),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           );
