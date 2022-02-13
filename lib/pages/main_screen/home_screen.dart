@@ -104,9 +104,9 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
               height: double.infinity,
               decoration: backGroundWidget(),
               child: Column(
-                children: const [
-                  CityTempView(),
-                  WeatherList(),
+                children: [
+                  CityTempView(data: state.loadWeather),
+                  WeatherList(data: state.loadWeather),
                 ],
               ),
             );
