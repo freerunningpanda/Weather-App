@@ -52,9 +52,9 @@ Widget weatherCardDetailed(
   var sunrise = forecastList[index].sunrise;
   var sunset = forecastList[index].sunset;
   var feelslikeMorn = forecastList[index].feelsLike.morn.floor();
-  var feelslikeDay = forecastList[index].feelsLike.morn.floor();
-  var feelslikeEve = forecastList[index].feelsLike.morn.floor();
-  var feelslikeNight = forecastList[index].feelsLike.morn.floor();
+  var feelslikeDay = forecastList[index].feelsLike.day.floor();
+  var feelslikeEve = forecastList[index].feelsLike.eve.floor();
+  var feelslikeNight = forecastList[index].feelsLike.night.floor();
 
   return Container(
     height: double.infinity,
