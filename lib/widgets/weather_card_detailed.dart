@@ -26,10 +26,6 @@ Widget weatherCardDetailed(
   int index,
 ) {
   var forecastList = state.list;
-  var dayOfTheWeek = '';
-  DateTime date =
-      DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
-  var fullDate = Util.getFormattedDate(date);
   var icon = forecastList[index].getIconUrl();
   var thermometer = 'assets/icons/thermometer.png';
   var rainy = 'assets/icons/rainy.png';
@@ -38,7 +34,6 @@ Widget weatherCardDetailed(
   var humidity = forecastList[index].humidity;
   var windSpeed = forecastList[index].speed;
   var description = forecastList[index].weather[0].description.toUpperCase();
-  dayOfTheWeek = fullDate.split(',')[0];
   var city = state.city.name;
   var country = state.city.country;
   var temperature = forecastList[index].temp.day.floorToDouble().toInt();
@@ -49,12 +44,10 @@ Widget weatherCardDetailed(
   forecastList[index].weather[0].description.toUpperCase();
   var formattedDate =
       DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
-  var sunrise = forecastList[index].sunrise;
-  var sunset = forecastList[index].sunset;
   var feelslikeMorn = forecastList[index].feelsLike.morn.floor();
   var feelslikeDay = forecastList[index].feelsLike.day.floor();
   var feelslikeEve = forecastList[index].feelsLike.eve.floor();
-  var feelslikeNight = forecastList[index].feelsLike.night.floor();
+  var feelslikeNight = forecastList[index].feelsLike.morn.floor();
 
   return Container(
     height: double.infinity,
