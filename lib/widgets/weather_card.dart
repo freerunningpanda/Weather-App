@@ -9,7 +9,7 @@ Widget weatherCard(WeatherForecast state, int index) {
   DateTime date =
       DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
   var fullDate = Util.getFormattedDate(date);
-  var minTemperature = forecastList[index].temp.min.floorToDouble().toInt();
+  var minTemperature = forecastList[index].temp.day.floorToDouble().toInt();
   var icon = forecastList[index].getIconUrl();
   dayOfTheWeek = fullDate.split(',')[0];
 

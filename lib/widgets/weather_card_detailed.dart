@@ -41,7 +41,11 @@ Widget weatherCardDetailed(
   dayOfTheWeek = fullDate.split(',')[0];
   var city = state.city.name;
   var country = state.city.country;
-  var temperature = forecastList[index].temp.min.floorToDouble().toInt();
+  var temperature = forecastList[index].temp.day.floorToDouble().toInt();
+  forecastList[index].weather[0].description.toUpperCase();
+  var minTemperature = forecastList[index].temp.min.floorToDouble().toInt();
+  forecastList[index].weather[0].description.toUpperCase();
+  var maxTemperature = forecastList[index].temp.max.floorToDouble().toInt();
   forecastList[index].weather[0].description.toUpperCase();
   var formattedDate =
       DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
@@ -92,7 +96,50 @@ Widget weatherCardDetailed(
                       Text(
                         description,
                         style: const TextStyle(fontSize: 15.0),
-                      )
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        'Min. temperature'.toUpperCase(),
+                        style: const TextStyle(
+                            fontSize: 15.0, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        '$minTemperature ℃',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: temperature <= 0
+                              ? Colors.blue[700]
+                              : Colors.orange[700],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        'Max. temperature'.toUpperCase(),
+                        style: const TextStyle(
+                            fontSize: 15.0, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        '$maxTemperature ℃',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: temperature <= 0
+                              ? Colors.blue[700]
+                              : Colors.orange[700],
+                        ),
+                      ),
                     ],
                   ),
                 ],
