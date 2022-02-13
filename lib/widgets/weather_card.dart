@@ -9,7 +9,7 @@ Widget weatherCard(WeatherForecast state, int index) {
   DateTime date =
       DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
   var fullDate = Util.getFormattedDate(date);
-  var minTemperature = forecastList[index].temp.day.floorToDouble().toInt();
+  var temperature = forecastList[index].temp.day.floorToDouble().toInt();
   var icon = forecastList[index].getIconUrl();
   dayOfTheWeek = fullDate.split(',')[0];
 
@@ -36,11 +36,10 @@ Widget weatherCard(WeatherForecast state, int index) {
               scale: 1.0,
             ),
             Text(
-              '$minTemperature ℃',
+              '$temperature ℃',
               style: TextStyle(
                 fontSize: 25.0,
-                color:
-                    minTemperature <= 0 ? Colors.blue[700] : Colors.orange[700],
+                color: temperature <= 0 ? Colors.blue[700] : Colors.orange[700],
               ),
             ),
           ],

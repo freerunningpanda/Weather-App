@@ -49,6 +49,12 @@ Widget weatherCardDetailed(
   forecastList[index].weather[0].description.toUpperCase();
   var formattedDate =
       DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
+  var sunrise = forecastList[index].sunrise;
+  var sunset = forecastList[index].sunset;
+  var feelslikeMorn = forecastList[index].feelsLike.morn.floor();
+  var feelslikeDay = forecastList[index].feelsLike.morn.floor();
+  var feelslikeEve = forecastList[index].feelsLike.morn.floor();
+  var feelslikeNight = forecastList[index].feelsLike.morn.floor();
 
   return Container(
     height: double.infinity,
@@ -145,7 +151,92 @@ Widget weatherCardDetailed(
                 ],
               ),
               const SizedBox(
-                height: 80,
+                height: 20,
+              ),
+              Text(
+                'Feels like'.toUpperCase(),
+                style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Image.asset('assets/icons/sunrise.png'),
+                      const SizedBox(height: 5),
+                      Image.asset('assets/icons/sun.png'),
+                      const SizedBox(height: 5),
+                    ],
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    children: [
+                      Text(
+                        '$feelslikeMorn ℃',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: feelslikeDay <= 0
+                              ? Colors.blue[700]
+                              : Colors.orange[800],
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        '$feelslikeMorn ℃',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: feelslikeDay <= 0
+                              ? Colors.blue[700]
+                              : Colors.orange[800],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 20),
+                  Column(
+                    children: [
+                      Image.asset('assets/icons/sunset.png'),
+                      const SizedBox(height: 5),
+                      Image.asset('assets/icons/night.png'),
+                      const SizedBox(height: 5),
+                    ],
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    children: [
+                      Text(
+                        '$feelslikeEve ℃',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: feelslikeNight <= 0
+                              ? Colors.blue[700]
+                              : Colors.orange[800],
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        '$feelslikeNight ℃',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: feelslikeDay <= 0
+                              ? Colors.blue[700]
+                              : Colors.orange[800],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Text(
                 'Wind, Pressure and Precipitation'.toUpperCase(),
