@@ -1,38 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/pages/main_screen/home_screen.dart';
 
-import '../main_screen/home_screen.dart';
-import '../../api/weather_api.dart';
+import '../../api/weather_repository.dart';
 import '../../widgets/splash_screen_widget.dart';
+import '../../cubit/weather_forecast_daily_cubit.dart';
 
-class LocationScreen extends StatefulWidget {
+class LocationScreen extends StatelessWidget {
   const LocationScreen({Key? key}) : super(key: key);
 
   @override
-  State<LocationScreen> createState() => _LocationScreenState();
-}
-
-class _LocationScreenState extends State<LocationScreen> {
-  void getLocationData() async {
-    var weatherInfo = await WeatherApi().fetchWeatherForecast();
-
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomeScreen(
-          locationWeather: weatherInfo,
-        ),
-      ),
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => WeatherForecastDailyCubit(WeatherRepository()),
+      child: const _LocationScreen(),
     );
   }
+}
+
+class _LocationScreen extends StatefulWidget {
+  const _LocationScreen({Key? key}) : super(key: key);
 
   @override
-  void initState() {
-    super.initState();
-    getLocationData();
-  }
+  State<_LocationScreen> createState() => _LocationScreenState();
+}
 
+class _LocationScreenState extends State<_LocationScreen> {
   @override
   Widget build(BuildContext context) {
-    return splashScreenWidget();
+    return BlocBuilder<WeatherForecastDailyCubit, WeatherForecastDailyState>(
+      builder: (context, state) {
+        if (state is WeatherForecastDailyInitial) {
+          context.read<WeatherForecastDailyCubit>().fetchWeatherWithCity();
+          return splashScreenWidget();
+        }
+        if (state is WeatherForecastLoadedState) {
+          return const HomeScreen();
+        }
+        return Container();
+      },
+    );
   }
 }

@@ -10,25 +10,9 @@ import '../../api/weather_repository.dart';
 import '../../widgets/city_temp_view.dart';
 import '../../widgets/weather_list.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   final WeatherForecast? locationWeather;
   const HomeScreen({Key? key, this.locationWeather}) : super(key: key);
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  Future<WeatherForecast>? forecastObject;
-  final String _cityName = 'Kiev';
-  @override
-  void initState() {
-    super.initState();
-
-    if (widget.locationWeather != null) {
-      forecastObject = WeatherApi().fetchWeatherForecast(cityName: _cityName);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
