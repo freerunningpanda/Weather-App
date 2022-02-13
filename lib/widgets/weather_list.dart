@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../pages/main_screen/cubit/weather_forecast_daily_cubit.dart';
 import '../widgets/weather_card.dart';
+import '../widgets/weather_card_detailed.dart';
 
 class WeatherList extends StatelessWidget {
   const WeatherList({Key? key}) : super(key: key);
@@ -37,12 +38,23 @@ class WeatherList extends StatelessWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => Container(
-                        decoration: BoxDecoration(
-                            color: Colors.blue[50],
-                            borderRadius: BorderRadius.circular(12.0)),
-                        width: MediaQuery.of(context).size.width / 3.0,
-                        child: weatherCard(state.loadWeather, index),
+                      itemBuilder: (context, index) => InkWell(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WeatherCardDetailed(
+                              index: index,
+                              state: state.loadWeather,
+                            ),
+                          ),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.blue[50],
+                              borderRadius: BorderRadius.circular(12.0)),
+                          width: MediaQuery.of(context).size.width / 3.0,
+                          child: weatherCard(state.loadWeather, index),
+                        ),
                       ),
                       separatorBuilder: (context, index) => const SizedBox(
                         width: 8,

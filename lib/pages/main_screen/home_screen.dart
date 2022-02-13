@@ -11,7 +11,7 @@ import '../../widgets/city_temp_view.dart';
 import '../../widgets/weather_list.dart';
 
 class HomeScreen extends StatefulWidget {
-  final locationWeather;
+  final WeatherForecast? locationWeather;
   const HomeScreen({Key? key, this.locationWeather}) : super(key: key);
 
   @override
