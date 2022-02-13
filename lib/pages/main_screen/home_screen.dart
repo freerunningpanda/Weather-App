@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/api/weather_api.dart';
 import 'package:weather_app/widgets/splash_screen_widget.dart';
 
 import '../../widgets/background_widget.dart';
@@ -9,26 +10,43 @@ import '../../api/weather_repository.dart';
 import '../../widgets/city_temp_view.dart';
 import '../../widgets/weather_list.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  final locationWeather;
+  const HomeScreen({Key? key, this.locationWeather}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  Future<WeatherForecast>? forecastObject;
+  final String _cityName = 'Kiev';
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.locationWeather != null) {
+      forecastObject = WeatherApi().fetchWeatherForecast(cityName: _cityName);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => WeatherForecastDailyCubit(WeatherRepository()),
-      child: const _HomeScreen(),
+      child: const _HomeScreenWidget(),
     );
   }
 }
 
-class _HomeScreen extends StatefulWidget {
-  const _HomeScreen({Key? key}) : super(key: key);
+class _HomeScreenWidget extends StatefulWidget {
+  const _HomeScreenWidget({Key? key}) : super(key: key);
 
   @override
-  State<_HomeScreen> createState() => _HomeScreenState();
+  State<_HomeScreenWidget> createState() => _HomeScreenWidgetState();
 }
 
-class _HomeScreenState extends State<_HomeScreen> {
+class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
   late Future<WeatherForecast> forecastObject;
   final String _cityName = 'Kiev';
   final items = ['By the hour', 'By the day'];
@@ -39,7 +57,11 @@ class _HomeScreenState extends State<_HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              forecastObject = WeatherApi().fetchWeatherForecast();
+            });
+          },
           icon: const Icon(
             Icons.my_location,
             color: Colors.yellow,

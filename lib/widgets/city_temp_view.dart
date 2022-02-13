@@ -33,6 +33,8 @@ class CityTempView extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     '$city, $country',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     style: TextStyle(
                         fontSize: 42.0,
                         fontWeight: FontWeight.bold,

@@ -44,8 +44,7 @@ class WeatherList extends StatelessWidget {
                         width: MediaQuery.of(context).size.width / 3.0,
                         child: weatherCard(state.loadWeather, index),
                       ),
-                      separatorBuilder: (context, index) =>
-                          const VerticalDivider(
+                      separatorBuilder: (context, index) => const SizedBox(
                         width: 8,
                       ),
                       itemCount: state.loadWeather.list.length,
