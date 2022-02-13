@@ -30,15 +30,21 @@ Widget weatherCardDetailed(
   DateTime date =
       DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
   var fullDate = Util.getFormattedDate(date);
-  var minTemperature = forecastList[index].temp.min.floorToDouble().toInt();
   var icon = forecastList[index].getIconUrl();
   var thermometer = 'assets/icons/thermometer.png';
   var rainy = 'assets/icons/rainy.png';
   var wind = 'assets/icons/wind.png';
-  var pressure = forecastList[0].pressure * 0.750062;
-  var humidity = forecastList[0].humidity;
-  var windSpeed = forecastList[0].speed;
+  var pressure = forecastList[index].pressure * 0.750062;
+  var humidity = forecastList[index].humidity;
+  var windSpeed = forecastList[index].speed;
+  var description = forecastList[index].weather[0].description.toUpperCase();
   dayOfTheWeek = fullDate.split(',')[0];
+  var city = state.city.name;
+  var country = state.city.country;
+  var temperature = forecastList[index].temp.min.floorToDouble().toInt();
+  forecastList[index].weather[0].description.toUpperCase();
+  var formattedDate =
+      DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
 
   return Container(
     height: double.infinity,
@@ -50,38 +56,59 @@ Widget weatherCardDetailed(
           decoration: borderWidget(),
           child: Column(
             children: [
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    dayOfTheWeek,
-                    style: const TextStyle(
-                        fontSize: 27,
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
+              const SizedBox(height: 16),
+              Text(
+                '$city, $country',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: const TextStyle(
+                    fontSize: 38.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87),
+              ),
+              Text(
+                Util.getFormattedDate(formattedDate),
+                style: const TextStyle(fontSize: 15),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: <Widget>[
                   Image.network(
                     icon,
-                    scale: 1.0,
+                    scale: 0.5,
                   ),
-                  Text(
-                    '$minTemperature ℃',
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      color: minTemperature <= 0
-                          ? Colors.blue[700]
-                          : Colors.orange[700],
-                    ),
+                  const SizedBox(width: 20.0),
+                  Column(
+                    children: [
+                      Text(
+                        '$temperature ℃',
+                        style: TextStyle(
+                            fontSize: 35,
+                            color: temperature <= 0
+                                ? Colors.blue[700]
+                                : Colors.orange[700],
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        description,
+                        style: const TextStyle(fontSize: 15.0),
+                      )
+                    ],
                   ),
                 ],
               ),
               const SizedBox(
-                height: 15,
+                height: 80,
+              ),
+              Text(
+                'Wind, Pressure and Precipitation'.toUpperCase(),
+                style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
