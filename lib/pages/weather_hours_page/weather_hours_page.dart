@@ -9,7 +9,7 @@ import '../../api/weather_repository.dart';
 import '../../widgets/city_temp_view.dart';
 import '../../widgets/weather_list_hourly.dart';
 import '../../utilities/constants.dart';
-import '../main_screen/home_screen.dart';
+import '../home_screen/home_screen.dart';
 
 class WeatherHoursPage extends StatelessWidget {
   final WeatherForecast? locationWeather;
@@ -68,15 +68,27 @@ class _WeatherHoursPageWidgetState extends State<_WeatherHoursPageWidget> {
               ),
               actions: [
                 PopupMenuButton<int>(
+                  color: Colors.yellow[200],
+                  icon: Image.asset('assets/icons/arrow_down.png'),
                   onSelected: (item) => onSelected(context, item),
                   itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text('By the day'),
+                      child: Center(
+                        child: Text(
+                          'By the day',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
-                      child: Text('By the hour'),
+                      child: Center(
+                        child: Text(
+                          'By the hour',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
                     ),
                   ],
                 )
