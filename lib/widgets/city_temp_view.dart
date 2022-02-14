@@ -63,7 +63,7 @@ class CityTempView extends StatelessWidget {
                       Text(
                         description,
                         style: const TextStyle(fontSize: 15.0),
-                      )
+                      ),
                     ],
                   ),
                 ],
