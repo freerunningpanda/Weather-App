@@ -138,21 +138,4 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
       default:
     }
   }
-
-  // DropdownMenuItem<String> buildMenuItem(String item) {
-  // switch (item) {
-  //   case :
-
-  //     break;
-  //   default:
-  // }
-
-  //   return DropdownMenuItem(
-  //     value: item,
-  //     child: Text(
-  //       item,
-  //       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-  //     ),
-  //   );
-  // }
 }
