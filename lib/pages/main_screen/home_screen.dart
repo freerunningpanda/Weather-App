@@ -45,73 +45,84 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            setState(() {
-              forecastObject =
-                  WeatherApi().fetchWeatherForecast(isDaily: _isDaily());
-            });
-          },
-          icon: const Icon(
-            Icons.my_location,
-            color: Colors.yellow,
-          ),
-        ),
-        centerTitle: true,
-        title: Image.asset(
-          'assets/logo/logo.png',
-          width: 100,
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                dropdownColor: Colors.yellow[100],
-                value: weatherSettingsMap[currentWeatherSearch],
-                icon: Image.asset('assets/icons/arrow_down.png'),
-                elevation: 16,
-                style: const TextStyle(color: Colors.blueGrey),
-                onChanged: (value) => setState(() {
-                  currentWeatherSearch = weatherSettingsMap.keys.firstWhere(
-                      (element) => weatherSettingsMap[element] == value);
-                  print(currentWeatherSearch);
-                }),
-                items: weatherSettingsMap.values.map(buildMenuItem).toList(),
+    return BlocBuilder<WeatherForecastDailyCubit, WeatherForecastDailyState>(
+      builder: (context, state) {
+        return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                onPressed: () {
+                  setState(
+                    () {
+                      context
+                          .read<WeatherForecastDailyCubit>()
+                          .fetchWeatherWithCity(
+                              cityName: _cityName, isDaily: _isDaily());
+                    },
+                  );
+                },
+                icon: const Icon(
+                  Icons.my_location,
+                  color: Colors.yellow,
+                ),
               ),
+              centerTitle: true,
+              title: Image.asset(
+                'assets/logo/logo.png',
+                width: 100,
+              ),
+              actions: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      dropdownColor: Colors.yellow[100],
+                      value: weatherSettingsMap[currentWeatherSearch],
+                      icon: Image.asset('assets/icons/arrow_down.png'),
+                      elevation: 16,
+                      style: const TextStyle(color: Colors.blueGrey),
+                      onChanged: (value) => setState(() {
+                        currentWeatherSearch = weatherSettingsMap.keys
+                            .firstWhere((element) =>
+                                weatherSettingsMap[element] == value);
+                        print(currentWeatherSearch);
+                      }),
+                      items:
+                          weatherSettingsMap.values.map(buildMenuItem).toList(),
+                    ),
+                  ),
+                ),
+              ],
+              backgroundColor: Colors.blueGrey,
             ),
-          ),
-        ],
-        backgroundColor: Colors.blueGrey,
-      ),
-      body: BlocBuilder<WeatherForecastDailyCubit, WeatherForecastDailyState>(
-        builder: (context, state) {
-          if (state is WeatherForecastDailyInitial) {
-            context
-                .read<WeatherForecastDailyCubit>()
-                .fetchWeatherWithCity(cityName: _cityName);
-            return splashScreenWidget();
-          }
-          if (state is WeatherForecastLoadedState) {
-            return Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: backGroundWidget(),
-              child: Column(
-                children: [
-                  CityTempView(data: state.loadWeather),
-                  WeatherList(data: state.loadWeather),
-                ],
-              ),
-            );
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-      ),
+            body: BlocBuilder<WeatherForecastDailyCubit,
+                WeatherForecastDailyState>(
+              builder: (context, state) {
+                if (state is WeatherForecastDailyInitial) {
+                  context
+                      .read<WeatherForecastDailyCubit>()
+                      .fetchWeatherWithCity(cityName: _cityName);
+                  return splashScreenWidget();
+                }
+                if (state is WeatherForecastLoadedState) {
+                  return Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    decoration: backGroundWidget(),
+                    child: Column(
+                      children: [
+                        CityTempView(data: state.loadWeather),
+                        WeatherList(data: state.loadWeather),
+                      ],
+                    ),
+                  );
+                }
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            ));
+      },
     );
   }
 

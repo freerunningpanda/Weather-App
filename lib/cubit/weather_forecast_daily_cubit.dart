@@ -11,7 +11,8 @@ class WeatherForecastDailyCubit extends Cubit<WeatherForecastDailyState> {
   WeatherForecastDailyCubit(this.weatherRepository)
       : super(WeatherForecastDailyInitial());
 
-  Future<void> fetchWeatherWithCity({String? cityName}) async {
+  Future<void> fetchWeatherWithCity(
+      {String? cityName, bool isDaily = false}) async {
     try {
       emit(WeatherForecastDailyInitial());
       final loadWeather = await weatherRepository.fetchWeatherForecastWithCity(
