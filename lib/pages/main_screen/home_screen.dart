@@ -71,7 +71,7 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
                   itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text('By the day'),
+                      child: Text('By the day.'),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
