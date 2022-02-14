@@ -7,31 +7,32 @@ import '../../models/weather_forecast.dart';
 import '../../cubit/weather_forecast_daily_cubit.dart';
 import '../../api/weather_repository.dart';
 import '../../widgets/city_temp_view.dart';
-import '../../widgets/weather_list.dart';
+import '../../widgets/weather_list_hourly.dart';
 import '../../utilities/constants.dart';
-import '../../pages/weather_hours_page/weather_hours_page.dart';
+import '../main_screen/home_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class WeatherHoursPage extends StatelessWidget {
   final WeatherForecast? locationWeather;
-  const HomeScreen({Key? key, this.locationWeather}) : super(key: key);
+  const WeatherHoursPage({Key? key, this.locationWeather}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => WeatherForecastDailyCubit(WeatherRepository()),
-      child: const _HomeScreenWidget(),
+      child: const _WeatherHoursPageWidget(),
     );
   }
 }
 
-class _HomeScreenWidget extends StatefulWidget {
-  const _HomeScreenWidget({Key? key}) : super(key: key);
+class _WeatherHoursPageWidget extends StatefulWidget {
+  const _WeatherHoursPageWidget({Key? key}) : super(key: key);
 
   @override
-  State<_HomeScreenWidget> createState() => _HomeScreenWidgetState();
+  State<_WeatherHoursPageWidget> createState() =>
+      _WeatherHoursPageWidgetState();
 }
 
-class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
+class _WeatherHoursPageWidgetState extends State<_WeatherHoursPageWidget> {
   late Future<WeatherForecast> forecastObject;
   final String _cityName = 'Kiev';
   final weatherSettingsMap = <WeatherSettings, String>{
@@ -99,7 +100,7 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
                     child: Column(
                       children: [
                         CityTempView(data: state.loadWeather),
-                        WeatherList(data: state.loadWeather),
+                        WeatherListHourly(data: state.loadWeather),
                       ],
                     ),
                   );

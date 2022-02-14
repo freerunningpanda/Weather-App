@@ -3,6 +3,7 @@ class Constants {
   static const String weatherBaseScheme = 'https://';
   static const String weatherBaseUrlDomain = 'api.openweathermap.org';
   static const String weatherForecastPath = '/data/2.5/forecast/daily';
+  static const String weatherForecastPathHourly = '/data/2.5/onecall?';
   static const String weatherImagesPath = '/img/w/';
   static const String weatherImagesUrl =
       weatherBaseScheme + weatherBaseUrlDomain + weatherImagesPath;

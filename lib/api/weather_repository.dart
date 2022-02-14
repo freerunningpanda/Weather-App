@@ -5,6 +5,5 @@ class WeatherRepository {
   final weatherApiProvider = WeatherApi();
   Future<WeatherForecast> fetchWeatherForecastWithCity(
           {String? cityName, bool isDaily = false}) =>
-      weatherApiProvider.fetchWeatherForecast(
-          cityName: cityName, isDaily: false);
+      weatherApiProvider.fetchWeatherForecast(cityName: cityName);
 }
