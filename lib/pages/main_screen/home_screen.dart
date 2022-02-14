@@ -67,15 +67,27 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
               ),
               actions: [
                 PopupMenuButton<int>(
+                  color: Colors.yellow[200],
+                  icon: Image.asset('assets/icons/arrow_down.png'),
                   onSelected: (item) => onSelected(context, item),
                   itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text('By the day'),
+                      child: Center(
+                        child: Text(
+                          'By the day',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
-                      child: Text('By the hour'),
+                      child: Center(
+                        child: Text(
+                          'By the hour',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
                     ),
                   ],
                 )
