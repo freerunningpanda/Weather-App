@@ -1,16 +1,36 @@
-# weather_app
 
-A new Flutter project.
+<h1 align="center">FlutterDex</h1>
 
-## Getting Started
+<p align="center">
+<img src="https://user-images.githubusercontent.com/91142494/153847157-c03efc33-a6a0-4a8c-bdb9-3a81ac61bced.png" width="23%"></img> 
+<img src="https://user-images.githubusercontent.com/91142494/153847480-10456548-41e7-41ce-8ac1-282a51788ddd.png" width="23%"></img> 
+<img src="https://user-images.githubusercontent.com/91142494/153847700-63700c1e-e06e-400a-a159-e7b8105416f4.png" width="23%"></img>
+</p>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+# WeatherApp (in progress...)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+A simple Weather App created using [Flutter](https://flutter.dev/) and [Dart](https://dart.dev/) and using API from [OpenWeatherMap](https://openweathermap.org/).
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Features
+
+- Weather forecast for 7 days
+- Hourly weather forecast
+- Detailed weather forecast info
+
+
+## How to Run
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/freerunningpanda/weather_app.git
+   ```
+2. Install all the packages by typing the following command
+   ```sh
+   flutter pub get
+   ```
+3. Run the App
+
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
