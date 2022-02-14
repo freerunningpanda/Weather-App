@@ -1,5 +1,5 @@
 
-<h1 align="center">FlutterDex</h1>
+<h1 align="center">WeatherApp</h1>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/91142494/153847157-c03efc33-a6a0-4a8c-bdb9-3a81ac61bced.png" width="23%"></img> 
