@@ -9,7 +9,7 @@ import '../utilities/geolocation.dart';
 
 class WeatherApi {
   Future<WeatherForecast> fetchWeatherForecast(
-      {String? cityName, bool isCity = false}) async {
+      {String? cityName, bool isCity = false, bool isDaily = false}) async {
     Geolocation geolocation = Geolocation();
     await geolocation.getLocation();
 
@@ -26,6 +26,7 @@ class WeatherApi {
       var queryParametres = {
         'APPID': Constants.weatherAppId,
         'units': 'metric',
+        // 'exclude': isDaily ? 'daily' : 'hourly',
         'lat': geolocation.lat.toString(),
         'lon': geolocation.lon.toString(),
       };

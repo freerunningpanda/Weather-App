@@ -7,3 +7,5 @@ class Constants {
   static const String weatherImagesUrl =
       weatherBaseScheme + weatherBaseUrlDomain + weatherImagesPath;
 }
+
+enum WeatherSettings { day, hour }

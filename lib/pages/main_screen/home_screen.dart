@@ -9,6 +9,7 @@ import '../../cubit/weather_forecast_daily_cubit.dart';
 import '../../api/weather_repository.dart';
 import '../../widgets/city_temp_view.dart';
 import '../../widgets/weather_list.dart';
+import '../../utilities/constants.dart';
 
 class HomeScreen extends StatelessWidget {
   final WeatherForecast? locationWeather;
@@ -33,8 +34,14 @@ class _HomeScreenWidget extends StatefulWidget {
 class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
   late Future<WeatherForecast> forecastObject;
   final String _cityName = 'Kiev';
-  final items = ['By the hour', 'By the day'];
-  String? dropdownValue;
+  final weatherSettingsMap = <WeatherSettings, String>{
+    WeatherSettings.day: 'By the day',
+    WeatherSettings.hour: 'By the hour',
+  };
+
+  WeatherSettings currentWeatherSearch = WeatherSettings.day;
+
+  bool _isDaily() => currentWeatherSearch == WeatherSettings.day;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +50,8 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
         leading: IconButton(
           onPressed: () {
             setState(() {
-              forecastObject = WeatherApi().fetchWeatherForecast();
+              forecastObject =
+                  WeatherApi().fetchWeatherForecast(isDaily: _isDaily());
             });
           },
           icon: const Icon(
@@ -62,12 +70,16 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 dropdownColor: Colors.yellow[100],
-                value: dropdownValue,
+                value: weatherSettingsMap[currentWeatherSearch],
                 icon: Image.asset('assets/icons/arrow_down.png'),
                 elevation: 16,
                 style: const TextStyle(color: Colors.blueGrey),
-                onChanged: (value) => setState(() => dropdownValue = value),
-                items: items.map(buildMenuItem).toList(),
+                onChanged: (value) => setState(() {
+                  currentWeatherSearch = weatherSettingsMap.keys.firstWhere(
+                      (element) => weatherSettingsMap[element] == value);
+                  print(currentWeatherSearch);
+                }),
+                items: weatherSettingsMap.values.map(buildMenuItem).toList(),
               ),
             ),
           ),
