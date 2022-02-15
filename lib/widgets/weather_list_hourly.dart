@@ -55,7 +55,7 @@ class WeatherListHourly extends StatelessWidget {
                         color: Colors.blue[50],
                         borderRadius: BorderRadius.circular(12.0)),
                     width: MediaQuery.of(context).size.width / 3.0,
-                    child: weatherCardHourly(data, index),
+                    child: WeatherCardHourly(state: data, index: index),
                   ),
                 ),
                 separatorBuilder: (context, index) => const SizedBox(
@@ -63,7 +63,7 @@ class WeatherListHourly extends StatelessWidget {
                 ),
                 itemCount: data.hourly.length,
               ),
-            )
+            ),
           ],
         ),
       ),

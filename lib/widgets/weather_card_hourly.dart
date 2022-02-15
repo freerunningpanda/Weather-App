@@ -3,6 +3,18 @@ import 'package:flutter/material.dart';
 import '../models/hourly/weather_forecast_hourly.dart';
 import '../utilities/forecast_util.dart';
 
+class WeatherCardHourly extends StatelessWidget {
+  final WeatherForecastHourly state;
+  final int index;
+  const WeatherCardHourly({Key? key, required this.state, required this.index})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return weatherCardHourly(state, index);
+  }
+}
+
 Widget weatherCardHourly(WeatherForecastHourly state, int index) {
   var forecastList = state.hourly;
   var hourly = '';
