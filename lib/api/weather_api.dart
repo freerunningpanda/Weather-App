@@ -62,7 +62,7 @@ class WeatherApi {
       parametres = queryParametres;
     } else {
       var queryParametres = {
-        'APPID': Constants.weatherAppId,
+        'APPID': Constants.weatherAppIdHourly,
         'units': 'metric',
         'exclude': 'current,daily,minutely,alerts',
         'lat': geolocation.lat.toString(),
