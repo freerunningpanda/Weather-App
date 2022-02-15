@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 import '../models/weather_forecast.dart';
+import '../models/hourly/weather_forecast_hourly.dart';
 import '../utilities/constants.dart';
 import '../utilities/geolocation.dart';
 
@@ -46,7 +47,7 @@ class WeatherApi {
     }
   }
 
-  Future<WeatherForecast> fetchWeatherForecastHourly(
+  Future<WeatherForecastHourly> fetchWeatherForecastHourly(
       {bool isCity = false}) async {
     Geolocation geolocation = Geolocation();
     await geolocation.getLocation();
@@ -78,7 +79,7 @@ class WeatherApi {
     var response = await http.get(uri);
 
     if (response.statusCode == 200) {
-      return WeatherForecast.fromJson(json.decode(response.body));
+      return WeatherForecastHourly.fromJson(json.decode(response.body));
     } else {
       throw Exception('Error response');
     }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/weather_card.dart';
+import '../widgets/weather_card_hourly.dart';
 import '../widgets/weather_card_detailed.dart';
 import '../widgets/border_widget.dart';
 import '../models/weather_forecast.dart';
@@ -47,7 +47,7 @@ class WeatherListHourly extends StatelessWidget {
                         color: Colors.blue[50],
                         borderRadius: BorderRadius.circular(12.0)),
                     width: MediaQuery.of(context).size.width / 3.0,
-                    child: weatherCard(data, index),
+                    child: weatherCardHourly(data, index),
                   ),
                 ),
                 separatorBuilder: (context, index) => const SizedBox(

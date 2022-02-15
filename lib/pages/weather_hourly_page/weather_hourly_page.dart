@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/widgets/splash_screen_widget.dart';
 
+import '../../widgets/splash_screen_widget.dart';
 import '../../widgets/background_widget.dart';
-import '../../models/weather_forecast.dart';
-import '../../cubit/weather_forecast_daily_cubit.dart';
+import '../../models/hourly/weather_forecast_hourly.dart';
+import '../../cubit/weather_forecast_hourly_cubit.dart';
 import '../../api/weather_repository.dart';
 import '../../widgets/city_temp_view.dart';
 import '../../widgets/weather_list_hourly.dart';
-import '../../utilities/constants.dart';
 import '../home_screen/home_screen.dart';
 
-class WeatherHoursPage extends StatelessWidget {
-  final WeatherForecast? locationWeather;
-  const WeatherHoursPage({Key? key, this.locationWeather}) : super(key: key);
+class WeatherHourlyPage extends StatelessWidget {
+  final WeatherForecastHourly? locationWeather;
+  const WeatherHourlyPage({Key? key, this.locationWeather}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => WeatherForecastDailyCubit(WeatherRepository()),
+      create: (_) => WeatherForecastHourlyCubit(WeatherRepository()),
       child: const _WeatherHoursPageWidget(),
     );
   }
@@ -33,16 +32,11 @@ class _WeatherHoursPageWidget extends StatefulWidget {
 }
 
 class _WeatherHoursPageWidgetState extends State<_WeatherHoursPageWidget> {
-  late Future<WeatherForecast> forecastObject;
-  final String _cityName = 'Kiev';
-  final weatherSettingsMap = <WeatherSettings, String>{
-    WeatherSettings.day: 'By the day',
-    WeatherSettings.hour: 'By the hour',
-  };
+  late Future<WeatherForecastHourly> forecastObject;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WeatherForecastDailyCubit, WeatherForecastDailyState>(
+    return BlocBuilder<WeatherForecastHourlyCubit, WeatherForecastHourlyState>(
       builder: (context, state) {
         return Scaffold(
             appBar: AppBar(
@@ -51,8 +45,8 @@ class _WeatherHoursPageWidgetState extends State<_WeatherHoursPageWidget> {
                   setState(
                     () {
                       context
-                          .read<WeatherForecastDailyCubit>()
-                          .fetchWeatherWithCity(cityName: _cityName);
+                          .read<WeatherForecastHourlyCubit>()
+                          .fetchWeatherForecastHourly();
                     },
                   );
                 },
@@ -95,13 +89,13 @@ class _WeatherHoursPageWidgetState extends State<_WeatherHoursPageWidget> {
               ],
               backgroundColor: Colors.blueGrey,
             ),
-            body: BlocBuilder<WeatherForecastDailyCubit,
-                WeatherForecastDailyState>(
+            body: BlocBuilder<WeatherForecastHourlyCubit,
+                WeatherForecastHourlyState>(
               builder: (context, state) {
-                if (state is WeatherForecastDailyInitial) {
+                if (state is WeatherForecastHourlyInitial) {
                   context
-                      .read<WeatherForecastDailyCubit>()
-                      .fetchWeatherWithCity(cityName: _cityName);
+                      .read<WeatherForecastHourlyCubit>()
+                      .fetchWeatherForecastHourly();
                   return splashScreenWidget();
                 }
                 if (state is WeatherForecastLoadedState) {
@@ -110,9 +104,14 @@ class _WeatherHoursPageWidgetState extends State<_WeatherHoursPageWidget> {
                     height: double.infinity,
                     decoration: backGroundWidget(),
                     child: Column(
-                      children: [
-                        CityTempView(data: state.loadWeather),
-                        WeatherListHourly(data: state.loadWeather),
+                      children: const [
+                        Text(
+                          'Loaded',
+                          style: TextStyle(
+                              fontSize: 50, fontWeight: FontWeight.bold),
+                        )
+                        // CityTempView(data: state.loadWeather),
+                        // WeatherListHourly(data: state.loadWeather),
                       ],
                     ),
                   );
@@ -134,7 +133,7 @@ class _WeatherHoursPageWidgetState extends State<_WeatherHoursPageWidget> {
         break;
       case 1:
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const WeatherHoursPage()));
+            MaterialPageRoute(builder: (context) => const WeatherHourlyPage()));
         break;
       default:
     }

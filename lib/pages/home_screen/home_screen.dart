@@ -9,7 +9,7 @@ import '../../api/weather_repository.dart';
 import '../../widgets/city_temp_view.dart';
 import '../../widgets/weather_list.dart';
 import '../../utilities/constants.dart';
-import '../../pages/weather_hours_page/weather_hours_page.dart';
+import '../weather_hourly_page/weather_hourly_page.dart';
 
 class HomeScreen extends StatelessWidget {
   final WeatherForecast? locationWeather;
@@ -133,7 +133,7 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
         break;
       case 1:
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const WeatherHoursPage()));
+            MaterialPageRoute(builder: (context) => const WeatherHourlyPage()));
         break;
       default:
     }
