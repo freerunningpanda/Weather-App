@@ -6,7 +6,6 @@ import '../../widgets/background_widget.dart';
 import '../../models/hourly/weather_forecast_hourly.dart';
 import '../../cubit/weather_forecast_hourly_cubit.dart';
 import '../../api/weather_repository.dart';
-import '../../widgets/city_temp_view.dart';
 import '../../widgets/weather_list_hourly.dart';
 import '../home_screen/home_screen.dart';
 

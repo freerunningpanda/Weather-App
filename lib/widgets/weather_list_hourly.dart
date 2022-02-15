@@ -12,7 +12,7 @@ class WeatherListHourly extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      padding: const EdgeInsets.all(16.0),
       child: Container(
         decoration: borderWidget(),
         child: Column(

@@ -5,13 +5,13 @@ import '../utilities/forecast_util.dart';
 
 Widget weatherCardHourly(WeatherForecastHourly state, int index) {
   var forecastList = state.hourly;
-  var dayOfTheWeek = '';
+  var hourly = '';
   DateTime time =
       DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
-  // var fullTime = Util.getFormattedTime(time);
+  var fullTime = Util.getFormattedTime(time);
   var temperature = forecastList[index].temp.floorToDouble().toInt();
   var icon = forecastList[index].getIconUrl();
-  // dayOfTheWeek = fullTime.split(',')[0];
+  hourly = fullTime;
 
   return SingleChildScrollView(
     child: Column(
@@ -20,11 +20,11 @@ Widget weatherCardHourly(WeatherForecastHourly state, int index) {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              dayOfTheWeek,
+              hourly,
               style: const TextStyle(
-                  fontSize: 27,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.bold),
+                fontSize: 25,
+                color: Colors.black87,
+              ),
             ),
           ),
         ),

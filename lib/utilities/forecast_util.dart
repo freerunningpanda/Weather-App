@@ -6,6 +6,10 @@ class Util {
     return DateFormat('EEE, MMM, d, y').format(dateTime);
   }
 
+  static String getFormattedTime(DateTime dateTime) {
+    return DateFormat('jm').format(dateTime);
+  }
+
   static getDetailForecast(String iconData, int value, String units) {
     return Column(
       children: [
