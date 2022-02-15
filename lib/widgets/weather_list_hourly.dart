@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/weather_card_hourly.dart';
-import '../widgets/weather_card_detailed_hourly.dart';
-import '../widgets/border_widget.dart';
 import '../models/hourly/weather_forecast_hourly.dart';
 import '../utilities/forecast_util.dart';
+import 'border_widget.dart';
+import 'weather_card_hourly.dart';
+import 'weather_card_detailed_hourly.dart';
 
 class WeatherListHourly extends StatelessWidget {
   final WeatherForecastHourly data;

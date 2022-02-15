@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/widgets/splash_screen_widget.dart';
 
-import '../../widgets/background_widget.dart';
-import '../../models/weather_forecast.dart';
-import '../../cubit/weather_forecast_daily_cubit.dart';
-import '../../api/weather_repository.dart';
-import '../../widgets/city_temp_view.dart';
-import '../../widgets/weather_list.dart';
-import '../../utilities/constants.dart';
 import '../weather_hourly_page/weather_hourly_page.dart';
+import '/api/weather_repository.dart';
+import '/cubit/weather_forecast_daily_cubit.dart';
+import '/models/weather_forecast.dart';
+import '/utilities/constants.dart';
+import '/widgets/background_widget.dart';
+import '/widgets/city_temp_view.dart';
+import '/widgets/weather_list.dart';
+import '/widgets/splash_screen_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   final WeatherForecast? locationWeather;

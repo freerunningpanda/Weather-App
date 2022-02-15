@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../models/weather_forecast.dart';
 import '../utilities/forecast_util.dart';
-import '../widgets/background_widget.dart';
-import '../widgets/border_widget.dart';
+import 'background_widget.dart';
+import 'border_widget.dart';
 
 class WeatherCardDetailed extends StatelessWidget {
   final WeatherForecast state;

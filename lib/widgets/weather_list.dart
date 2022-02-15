@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/weather_card.dart';
-import '../widgets/weather_card_detailed.dart';
-import '../widgets/border_widget.dart';
 import '../models/weather_forecast.dart';
+import 'border_widget.dart';
+import 'weather_card.dart';
+import 'weather_card_detailed.dart';
 
 class WeatherList extends StatelessWidget {
   final WeatherForecast data;

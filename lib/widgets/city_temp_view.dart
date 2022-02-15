@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'border_widget.dart';
 import '../utilities/forecast_util.dart';
-import '../widgets/border_widget.dart';
 import '../models/weather_forecast.dart';
 
 class CityTempView extends StatelessWidget {
