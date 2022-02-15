@@ -104,14 +104,8 @@ class _WeatherHoursPageWidgetState extends State<_WeatherHoursPageWidget> {
                     height: double.infinity,
                     decoration: backGroundWidget(),
                     child: Column(
-                      children: const [
-                        Text(
-                          'Loaded',
-                          style: TextStyle(
-                              fontSize: 50, fontWeight: FontWeight.bold),
-                        )
-                        // CityTempView(data: state.loadWeather),
-                        // WeatherListHourly(data: state.loadWeather),
+                      children: [
+                        WeatherListHourly(data: state.loadWeather),
                       ],
                     ),
                   );

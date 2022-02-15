@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'weather.dart';
+import '../../utilities/constants.dart';
 
 part 'hourly.g.dart';
 
@@ -37,6 +38,10 @@ class Hourly {
   final double windGust;
   final List<Weather> weather;
   final int pop;
+
+  String getIconUrl() {
+    return Constants.weatherImagesUrl + weather[0].icon + '.png';
+  }
 
   factory Hourly.fromJson(Map<String, dynamic> json) => _$HourlyFromJson(json);
 

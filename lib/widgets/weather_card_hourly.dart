@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../models/weather_forecast.dart';
+import '../models/hourly/weather_forecast_hourly.dart';
 import '../utilities/forecast_util.dart';
 
-Widget weatherCardHourly(WeatherForecast state, int index) {
-  var forecastList = state.list;
+Widget weatherCardHourly(WeatherForecastHourly state, int index) {
+  var forecastList = state.hourly;
   var dayOfTheWeek = '';
-  DateTime date =
+  DateTime time =
       DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
-  var fullDate = Util.getFormattedDate(date);
-  var temperature = forecastList[index].temp.day.floorToDouble().toInt();
+  // var fullTime = Util.getFormattedTime(time);
+  var temperature = forecastList[index].temp.floorToDouble().toInt();
   var icon = forecastList[index].getIconUrl();
-  dayOfTheWeek = fullDate.split(',')[0];
+  // dayOfTheWeek = fullTime.split(',')[0];
 
   return SingleChildScrollView(
     child: Column(

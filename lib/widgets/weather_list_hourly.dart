@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../widgets/weather_card_hourly.dart';
 import '../widgets/weather_card_detailed.dart';
 import '../widgets/border_widget.dart';
-import '../models/weather_forecast.dart';
+import '../models/hourly/weather_forecast_hourly.dart';
 
 class WeatherListHourly extends StatelessWidget {
-  final WeatherForecast data;
+  final WeatherForecastHourly data;
   const WeatherListHourly({Key? key, required this.data}) : super(key: key);
 
   @override
@@ -33,15 +33,17 @@ class WeatherListHourly extends StatelessWidget {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => InkWell(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WeatherCardDetailed(
-                        index: index,
-                        state: data,
-                      ),
-                    ),
-                  ),
+                  onTap: () {
+                    //   Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => WeatherCardDetailed(
+                    //       index: index,
+                    //       state: data,
+                    //     ),
+                    //   ),
+                    // );
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.blue[50],
@@ -53,7 +55,7 @@ class WeatherListHourly extends StatelessWidget {
                 separatorBuilder: (context, index) => const SizedBox(
                   width: 8,
                 ),
-                itemCount: data.list.length,
+                itemCount: data.hourly.length,
               ),
             )
           ],
