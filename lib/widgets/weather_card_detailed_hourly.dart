@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../models/weather_forecast.dart';
+import '../models/hourly/weather_forecast_hourly.dart';
 import '../utilities/forecast_util.dart';
 import '../widgets/background_widget.dart';
 import '../widgets/border_widget.dart';
 
-class WeatherCardDetailed extends StatelessWidget {
-  final WeatherForecast state;
+class WeatherCardDetailedHourly extends StatelessWidget {
+  final WeatherForecastHourly state;
   final int index;
-  const WeatherCardDetailed(
+  const WeatherCardDetailedHourly(
       {Key? key, required this.state, required this.index})
       : super(key: key);
 
@@ -22,32 +22,26 @@ class WeatherCardDetailed extends StatelessWidget {
 
 Widget weatherCardDetailed(
   BuildContext context,
-  WeatherForecast state,
+  WeatherForecastHourly state,
   int index,
 ) {
-  var forecastList = state.list;
+  var hourly = '';
+  var forecastList = state.hourly;
   var icon = forecastList[index].getIconUrl();
   var thermometer = 'assets/icons/thermometer.png';
   var rainy = 'assets/icons/rainy.png';
   var wind = 'assets/icons/wind.png';
   var pressure = forecastList[index].pressure * 0.750062;
   var humidity = forecastList[index].humidity;
-  var windSpeed = forecastList[index].speed;
+  var windSpeed = forecastList[index].windSpeed;
   var description = forecastList[index].weather[0].description.toUpperCase();
-  var city = state.city.name;
-  var country = state.city.country;
-  var temperature = forecastList[index].temp.day.floorToDouble().toInt();
-  forecastList[index].weather[0].description.toUpperCase();
-  var minTemperature = forecastList[index].temp.min.floorToDouble().toInt();
-  forecastList[index].weather[0].description.toUpperCase();
-  var maxTemperature = forecastList[index].temp.max.floorToDouble().toInt();
-  forecastList[index].weather[0].description.toUpperCase();
-  var formattedDate =
-      DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
-  var feelslikeMorn = forecastList[index].feelsLike.morn.floor();
-  var feelslikeDay = forecastList[index].feelsLike.day.floor();
-  var feelslikeEve = forecastList[index].feelsLike.eve.floor();
-  var feelslikeNight = forecastList[index].feelsLike.morn.floor();
+  var temperature = forecastList[index].temp.floorToDouble().toInt();
+  var time = DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
+  var fullTime = Util.getFormattedTime(time);
+  var feelslike = forecastList[index].feelsLike.floor();
+  var dewPoint = forecastList[index].dewPoint;
+  var visibility = forecastList[index].visibility;
+  hourly = fullTime;
 
   return Container(
     height: double.infinity,
@@ -61,7 +55,7 @@ Widget weatherCardDetailed(
             children: [
               const SizedBox(height: 16),
               Text(
-                '$city, $country',
+                hourly,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 style: const TextStyle(
@@ -69,10 +63,6 @@ Widget weatherCardDetailed(
                   fontWeight: FontWeight.bold,
                   color: Colors.black87,
                 ),
-              ),
-              Text(
-                Util.getFormattedDate(formattedDate),
-                style: const TextStyle(fontSize: 15),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -107,12 +97,12 @@ Widget weatherCardDetailed(
                   Column(
                     children: [
                       Text(
-                        'Min. temperature'.toUpperCase(),
+                        'Dew point'.toUpperCase(),
                         style: const TextStyle(
                             fontSize: 15.0, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        '$minTemperature ℃',
+                        '$dewPoint ℃',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -126,12 +116,12 @@ Widget weatherCardDetailed(
                   Column(
                     children: [
                       Text(
-                        'Max. temperature'.toUpperCase(),
+                        'Visibility'.toUpperCase(),
                         style: const TextStyle(
                             fontSize: 15.0, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        '$maxTemperature ℃',
+                        '$visibility m',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -154,80 +144,13 @@ Widget weatherCardDetailed(
                     color: Colors.black87,
                     fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      Image.asset('assets/icons/sunrise.png'),
-                      const SizedBox(height: 5),
-                      Image.asset('assets/icons/sun.png'),
-                      const SizedBox(height: 5),
-                    ],
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    children: [
-                      Text(
-                        '$feelslikeMorn ℃',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: feelslikeMorn <= 0
-                              ? Colors.blue[700]
-                              : Colors.orange[800],
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        '$feelslikeDay ℃',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: feelslikeDay <= 0
-                              ? Colors.blue[700]
-                              : Colors.orange[800],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(width: 20),
-                  Column(
-                    children: [
-                      Image.asset('assets/icons/sunset.png'),
-                      const SizedBox(height: 5),
-                      Image.asset('assets/icons/night.png'),
-                      const SizedBox(height: 5),
-                    ],
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    children: [
-                      Text(
-                        '$feelslikeEve ℃',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: feelslikeEve <= 0
-                              ? Colors.blue[700]
-                              : Colors.orange[800],
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        '$feelslikeNight ℃',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: feelslikeNight <= 0
-                              ? Colors.blue[700]
-                              : Colors.orange[800],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+              Text(
+                '$feelslike ℃',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: feelslike <= 0 ? Colors.blue[700] : Colors.orange[800],
+                ),
               ),
               const SizedBox(
                 height: 20,
