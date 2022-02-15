@@ -37,11 +37,8 @@ Widget weatherCardDetailed(
   var city = state.city.name;
   var country = state.city.country;
   var temperature = forecastList[index].temp.day.floorToDouble().toInt();
-  forecastList[index].weather[0].description.toUpperCase();
   var minTemperature = forecastList[index].temp.min.floorToDouble().toInt();
-  forecastList[index].weather[0].description.toUpperCase();
   var maxTemperature = forecastList[index].temp.max.floorToDouble().toInt();
-  forecastList[index].weather[0].description.toUpperCase();
   var formattedDate =
       DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt * 1000);
   var feelslikeMorn = forecastList[index].feelsLike.morn.floor();
