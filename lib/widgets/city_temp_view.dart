@@ -32,10 +32,10 @@ class CityTempView extends StatelessWidget {
                 '$city, $country',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 38.0,
                     fontWeight: FontWeight.bold,
-                    color: Colors.orange[800]),
+                    color: Colors.black87),
               ),
               Text(
                 Util.getFormattedDate(formattedDate),
