@@ -8,6 +8,11 @@ class Constants {
   static const String weatherImagesPath = '/img/w/';
   static const String weatherImagesUrl =
       weatherBaseScheme + weatherBaseUrlDomain + weatherImagesPath;
+  static const String weatherCityInfo = 'weatherCityInfo';
+  static const String weatherDailyList = 'weatherDailyList';
+  static const String weatherDailyDetailed = 'weatherDailyDetailed';
+  static const String weatherHourlyList = 'weatherHourlyList';
+  static const String weatherHourlyDetailed = 'weatherHourlyDetailed';
 }
 
 enum WeatherSettings { day, hour }

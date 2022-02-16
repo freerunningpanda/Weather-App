@@ -115,7 +115,7 @@ class WeatherCardDetailed extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            color: temperature <= 0
+                            color: minTemperature <= 0
                                 ? Colors.blue[700]
                                 : Colors.orange[700],
                           ),
@@ -134,7 +134,7 @@ class WeatherCardDetailed extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            color: temperature <= 0
+                            color: maxTemperature <= 0
                                 ? Colors.blue[700]
                                 : Colors.orange[700],
                           ),
