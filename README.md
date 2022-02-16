@@ -2,7 +2,7 @@
 <h1 align="center">WeatherApp</h1>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/91142494/153847157-c03efc33-a6a0-4a8c-bdb9-3a81ac61bced.png" width="23%"></img> 
+<img src="https://user-images.githubusercontent.com/91142494/154230355-4a22b4a7-7543-4059-b3c5-fd5f7cd4d166.png" width="23%"></img> 
 <img src="https://user-images.githubusercontent.com/91142494/153847700-63700c1e-e06e-400a-a159-e7b8105416f4.png" width="23%"></img>
 <img src="https://user-images.githubusercontent.com/91142494/154228650-d813e495-2c3d-40e0-a369-81a3281c24f5.png" width="23%"></img>
 <img src="https://user-images.githubusercontent.com/91142494/154228873-6b82482f-9495-4b6a-9d46-6bff39cf657b.png" width="23%"></img>
