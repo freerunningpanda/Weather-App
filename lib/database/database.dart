@@ -1,15 +1,16 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '/models/weather_forecast.dart';
 import '/models/city.dart';
 import '/models/coord.dart';
 import '/models/feels_like.dart';
-import '/models/temp.dart';
-import '/models/weather_list.dart';
-import '/models/weather.dart';
-import '/models/hourly/weather_forecast_hourly.dart';
 import '/models/hourly/hourly.dart';
+import '/models/hourly/weather_forecast_hourly.dart';
+import '/models/temp.dart';
+import '/models/weather.dart';
+import '/models/weather_forecast.dart';
+import '/models/weather_list.dart';
+
 import '/models/hourly/weather.dart' as weather_adapter_houly;
 import '/utilities/constants.dart';
 

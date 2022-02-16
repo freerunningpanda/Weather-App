@@ -1,5 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:hive/hive.dart';
 
 import 'feels_like.dart';
 import 'temp.dart';

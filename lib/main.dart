@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'pages/splash_screen/splash_screen.dart';
 import 'database/database.dart';
+import 'pages/splash_screen/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,8 +1,8 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:hive/hive.dart';
 
+import '/utilities/constants.dart';
 import 'weather.dart';
-import '../../utilities/constants.dart';
 
 part 'hourly.g.dart';
 
