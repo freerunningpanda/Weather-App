@@ -41,6 +41,9 @@ dependencies:
   flutter_bloc: ^8.0.1
   intl: ^0.17.0
   geolocator: ^7.4.0
+  hive: ^2.0.5
+  hive_flutter: ^1.1.0
+  path_provider: ^2.0.9
 
 flutter_native_splash:
   color: "#00ACC1"
@@ -54,6 +57,7 @@ dev_dependencies:
     sdk: flutter
   json_serializable:
   build_runner:
+  hive_generator:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

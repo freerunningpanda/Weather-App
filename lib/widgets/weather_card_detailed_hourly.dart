@@ -106,7 +106,7 @@ class WeatherCardDetailedHourly extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            color: temperature <= 0
+                            color: dewPoint <= 0
                                 ? Colors.blue[700]
                                 : Colors.orange[700],
                           ),
@@ -122,12 +122,10 @@ class WeatherCardDetailedHourly extends StatelessWidget {
                         ),
                         Text(
                           '$visibility m',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            color: temperature <= 0
-                                ? Colors.blue[700]
-                                : Colors.orange[700],
+                            color: Colors.black87,
                           ),
                         ),
                       ],
