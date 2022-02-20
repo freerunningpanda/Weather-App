@@ -1,6 +1,6 @@
 class Constants {
   static const String weatherAppId = '1369dd6b5ae78fc9952261ab9aa236b4';
-  static const String weatherAppIdHourly = '37812953bdb750e43ba42db51ce6087b';
+  static const String weatherAppIdHourly = '6f735c64776c94bc1257a8cc779ac194';
   static const String weatherBaseScheme = 'https://';
   static const String weatherBaseUrlDomain = 'api.openweathermap.org';
   static const String weatherForecastPath = '/data/2.5/forecast/daily';
