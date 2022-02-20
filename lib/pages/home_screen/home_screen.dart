@@ -5,10 +5,8 @@ import '../../cubit/weather_forecast_hourly_cubit.dart';
 import '../../widgets/daily/weather_list.dart';
 import '../../widgets/splash_screen_widget.dart';
 import '../../widgets/weather_list_hourly.dart';
-import '../weather_hourly_page/weather_hourly_page.dart';
 import '/cubit/weather_forecast_daily_cubit.dart';
 import '/models/weather_forecast.dart';
-import '/utilities/constants.dart';
 import '/widgets/background_widget.dart';
 import '/widgets/city_temp_view.dart';
 
@@ -30,12 +28,7 @@ class _HomeScreenWidget extends StatefulWidget {
 }
 
 class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
-  late Future<WeatherForecast> forecastObject;
   final String _cityName = 'Kiev';
-  final weatherSettingsMap = <WeatherSettings, String>{
-    WeatherSettings.day: 'By the day',
-    WeatherSettings.hour: 'By the hour',
-  };
   var isFlag = true;
 
   @override
@@ -212,16 +205,5 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
     setState(() {
       isFlag = item == 0;
     });
-    // switch (item) {
-    //   case 0:
-    //     Navigator.push(context,
-    //         MaterialPageRoute(builder: (context) => const HomeScreen()));
-    //     break;
-    //   case 1:
-    //     Navigator.push(context,
-    //         MaterialPageRoute(builder: (context) => const WeatherHourlyPage()));
-    //     break;
-    //   default:
-    // }
   }
 }
