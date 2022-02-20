@@ -25,6 +25,9 @@ class LocationScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is WeatherForecastDailyInitial) {
             context.read<WeatherForecastDailyCubit>().fetchWeatherWithCity();
+            context
+                .read<WeatherForecastHourlyCubit>()
+                .fetchWeatherForecastHourly();
             return splashScreenWidget();
           }
           if (state is WeatherForecastLoadedState) {

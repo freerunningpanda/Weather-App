@@ -62,7 +62,7 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
                       PopupMenuButton<int>(
                         color: Colors.yellow[200],
                         icon: Image.asset('assets/icons/arrow_down.png'),
-                        onSelected: (item) => onSelected(context, item),
+                        onSelected: (item) => onSelected(item),
                         itemBuilder: (context) => [
                           const PopupMenuItem<int>(
                             value: 0,
@@ -145,7 +145,7 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
                     PopupMenuButton<int>(
                       color: Colors.yellow[200],
                       icon: Image.asset('assets/icons/arrow_down.png'),
-                      onSelected: (item) => onSelected(context, item),
+                      onSelected: (item) => onSelected(item),
                       itemBuilder: (context) => [
                         const PopupMenuItem<int>(
                           value: 0,
@@ -173,12 +173,12 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
                 body: BlocBuilder<WeatherForecastHourlyCubit,
                     WeatherForecastHourlyState>(
                   builder: (context, state) {
-                    if (state is WeatherForecastHourlyInitial) {
-                      context
-                          .read<WeatherForecastHourlyCubit>()
-                          .fetchWeatherForecastHourly();
-                      return splashScreenWidget();
-                    }
+                    // if (state is WeatherForecastHourlyInitial) {
+                    //   context
+                    //       .read<WeatherForecastHourlyCubit>()
+                    //       .fetchWeatherForecastHourly();
+                    //   return splashScreenWidget();
+                    // }
                     if (state is WeatherForecastHourlyLoadedState) {
                       return Container(
                         width: double.infinity,
@@ -201,7 +201,7 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
           );
   }
 
-  void onSelected(BuildContext context, int item) {
+  void onSelected(int item) {
     setState(() {
       isFlag = item == 0;
     });
