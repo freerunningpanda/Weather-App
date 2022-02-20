@@ -30,7 +30,7 @@ class HourlyAdapter extends TypeAdapter<Hourly> {
       windDeg: fields[10] as int,
       windGust: fields[11] as double,
       weather: (fields[12] as List).cast<Weather>(),
-      pop: fields[13] as int,
+      pop: fields[13] as double,
     );
   }
 
@@ -99,7 +99,7 @@ Hourly _$HourlyFromJson(Map<String, dynamic> json) => Hourly(
       weather: (json['weather'] as List<dynamic>)
           .map((e) => Weather.fromJson(e as Map<String, dynamic>))
           .toList(),
-      pop: json['pop'] as int,
+      pop: (json['pop'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$HourlyToJson(Hourly instance) => <String, dynamic>{

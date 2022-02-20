@@ -16,7 +16,7 @@ class WeatherForecastHourlyCubit extends Cubit<WeatherForecastHourlyState> {
       emit(WeatherForecastHourlyInitial());
       final loadWeather = await weatherRepository.fetchWeatherForecastHourly();
 
-      emit(WeatherForecastLoadedState(loadWeather));
+      emit(WeatherForecastHourlyLoadedState(loadWeather));
     } catch (e) {
       emit(
         WeatherForecastErrorState(e.toString()),

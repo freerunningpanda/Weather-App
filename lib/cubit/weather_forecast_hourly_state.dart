@@ -5,10 +5,10 @@ abstract class WeatherForecastHourlyState {}
 
 class WeatherForecastHourlyInitial extends WeatherForecastHourlyState {}
 
-class WeatherForecastLoadedState extends WeatherForecastHourlyState {
+class WeatherForecastHourlyLoadedState extends WeatherForecastHourlyState {
   final WeatherForecastHourly loadWeather;
 
-  WeatherForecastLoadedState(this.loadWeather);
+  WeatherForecastHourlyLoadedState(this.loadWeather);
 }
 
 class WeatherForecastErrorState extends WeatherForecastHourlyState {

@@ -53,7 +53,7 @@ class Hourly extends HiveObject {
   @HiveField(12)
   final List<Weather> weather;
   @HiveField(13)
-  final int pop;
+  final double pop;
 
   String getIconUrl() {
     return Constants.weatherImagesUrl + weather[0].icon + '.png';
