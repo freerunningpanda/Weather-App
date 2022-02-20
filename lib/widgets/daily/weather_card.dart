@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../models/weather_forecast.dart';
-import '../utilities/forecast_util.dart';
+import '../../models/weather_forecast.dart';
+import '../../utilities/forecast_util.dart';
 
 class WeatherCard extends StatelessWidget {
   final WeatherForecast state;
