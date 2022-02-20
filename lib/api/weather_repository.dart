@@ -8,7 +8,6 @@ class WeatherRepository {
           {String? cityName, bool isDaily = false}) =>
       weatherApiProvider.fetchWeatherForecast(cityName: cityName);
 
-  Future<WeatherForecastHourly> fetchWeatherForecastHourly(
-          {bool isDaily = false}) =>
+  Future<WeatherForecastHourly> fetchWeatherForecastHourly() =>
       weatherApiProvider.fetchWeatherForecastHourly();
 }

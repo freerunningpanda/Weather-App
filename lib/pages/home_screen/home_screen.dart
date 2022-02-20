@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../widgets/daily/weather_list.dart';
 import '../weather_hourly_page/weather_hourly_page.dart';
-import '/api/weather_repository.dart';
 import '/cubit/weather_forecast_daily_cubit.dart';
 import '/models/weather_forecast.dart';
 import '/utilities/constants.dart';
@@ -17,10 +16,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => WeatherForecastDailyCubit(WeatherRepository()),
-      child: const _HomeScreenWidget(),
-    );
+    return const _HomeScreenWidget();
   }
 }
 
@@ -51,7 +47,7 @@ class _HomeScreenWidgetState extends State<_HomeScreenWidget> {
                     () {
                       context
                           .read<WeatherForecastDailyCubit>()
-                          .fetchWeatherWithCity(cityName: _cityName);
+                          .fetchWeatherWithCity();
                     },
                   );
                 },

@@ -47,29 +47,20 @@ class WeatherApi {
     }
   }
 
-  Future<WeatherForecastHourly> fetchWeatherForecastHourly(
-      {bool isCity = false}) async {
+  Future<WeatherForecastHourly> fetchWeatherForecastHourly() async {
     Geolocation geolocation = Geolocation();
     await geolocation.getLocation();
 
     Map<String, String?> parametres;
 
-    if (isCity) {
-      var queryParametres = {
-        'APPID': Constants.weatherAppId,
-        'units': 'metric',
-      };
-      parametres = queryParametres;
-    } else {
-      var queryParametres = {
-        'APPID': Constants.weatherAppIdHourly,
-        'units': 'metric',
-        'exclude': 'current,daily,minutely,alerts',
-        'lat': geolocation.lat.toString(),
-        'lon': geolocation.lon.toString(),
-      };
-      parametres = queryParametres;
-    }
+    var queryParametres = {
+      'APPID': Constants.weatherAppIdHourly,
+      'units': 'metric',
+      'exclude': 'current,daily,minutely,alerts',
+      'lat': geolocation.lat.toString(),
+      'lon': geolocation.lon.toString(),
+    };
+    parametres = queryParametres;
 
     var uri = Uri.https(Constants.weatherBaseUrlDomain,
         Constants.weatherForecastPathHourly, parametres);
