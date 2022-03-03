@@ -9,7 +9,7 @@
 </p>
 
 
-# WeatherApp (in progress...)
+# WeatherApp
 
 A simple Weather App created using [Flutter](https://flutter.dev/) and [Dart](https://dart.dev/) and using API from [OpenWeatherMap](https://openweathermap.org/).
 
@@ -32,6 +32,3 @@ A simple Weather App created using [Flutter](https://flutter.dev/) and [Dart](ht
    flutter pub get
    ```
 3. Run the App
-
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
