@@ -9,7 +9,7 @@
 </p>
 
 
-# WeatherApp
+# WeatherApp 
 
 A simple Weather App created using [Flutter](https://flutter.dev/) and [Dart](https://dart.dev/) and using API from [OpenWeatherMap](https://openweathermap.org/).
 
